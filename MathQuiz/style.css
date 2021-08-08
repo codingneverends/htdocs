@@ -1,0 +1,165 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    color: white;
+}
+html{
+    background: black;
+}
+*:focus{
+    outline: none;
+}
+#app{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+.login,.qn{
+    background: #222;
+    padding: 50px;
+}
+.login input{
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: black;
+    border: none;
+    font-size: 1.1rem;
+}
+.login button{
+    display: block;
+    margin: auto;
+    border: none;
+    padding: 15px 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: #0000006f;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: -2px -2px 2px #ffffffaf,2px 2px 2px black;
+}
+.login button:hover{
+    box-shadow: -1px -1px 2px #ffffffaf,1px 1px 2px black;
+}
+.qn{
+    width: 80vw;
+    max-width: 400px;
+}
+.qn .qnQ{
+    padding-bottom: 30px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+.qn .qnq{
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.qn .qnq.c{
+    text-align: center;
+}
+.dff{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.qn input{
+    background: transparent;
+    padding: 15px;
+    margin-top: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    margin-left: 10px;
+}
+.qn button{
+    display: block;
+    margin: auto;
+    padding: 14px 25px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+}
+.qn .status{
+    text-align: center;
+    font-size: 1.3rem;
+}
+.qn .status.t i{
+    color: #0f0;
+}
+.qn .status.f i{
+    color: #f00;
+}
+.hd{
+    font-size: 2.5rem;
+    padding: 20px;
+    text-align: center;
+    font-weight: 800;
+    text-shadow: 2px 2px blue,-2px -2px red;
+}
+#topbar{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 20px;
+    font-size: 1.3rem;
+    background: #333;
+    width: 100%;
+    text-shadow: 1px 1px blue,-1px -1px red;
+}
+.login .eqn{
+    display: flex;
+}
+.login .eqn .ele{
+    margin: 10px;
+    min-width: 100px;
+    text-align: center;
+}
+.login .eqn .ele.g1{
+    flex-grow: 1;
+}
+.login .eqn .ele.t i{
+    color: #0f0;
+}
+.login .eqn .ele.f i{
+    color: #f00;
+}
+.login .fin{
+    font-size: 1rem;
+    margin-top: 50px;
+}
+.login .allqns{
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+.login .inp{
+    border-radius: 20px;
+    text-align: center;
+}
+::-webkit-scrollbar{
+    background: black;
+    width: 0px;
+    height: 0px;
+}
+#showmark{
+    background: black;
+    color: #f00;
+    border: 2px solid red;
+    border-radius: 50%;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    padding: 30px;
+    font-size: 2rem;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}

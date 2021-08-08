@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="init()">
+    
+    <div class="topbar">
+        <h1>ChatBox</h1>
+    </div>
+    <div class="mbox">
+        <div id="chats">
+            <!--Inject Chats-->
+        </div>
+        <div id="add">
+            <div class="indiv">
+                <div class="indiv_">
+                    <input type="text">
+                    <button onclick="CHATS.add()">send</button>
+                </div>
+                <div id="_name">
+                    <div class="indiv_">
+                    <input type="button" value="Anonymous">
+                    <button onclick="CHATS.setname()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz - Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--This is admin page , which will intiate Quiz tables and 1000 Quizes (Database should create manually)-->
+    <div id="app">
+        <div class="appchild">
+            <div class="login">
+                <div id="topbar">Math Quiz : Admin</div>
+                <div id="inject">
+                    <button onclick="Init()">Init Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        getStatus();
+        function Init(){
+            var url="php/admin.php";
+            var data=new FormData();
+            data.append('status','init');
+            Post(url,data,(response)=>{
+                response=JSON.parse(response);
+                console.log(response);
+                getStatus();
+                gen1000();
+            })
+        }
+        function getStatus(){
+            var url="php/admin.php";
+            var data=new FormData();
+            data.append('status','getstatus');
+            Post(url,data,(response)=>{
+                response=JSON.parse(response);
+                if(response){
+                    Inject(response);
+                }
+            })
+        }
+        function Inject(response){
+            const inject=document.getElementById("inject");
+            inject.innerHTML="Users<br><br>";
+            if(response.length==0){
+                inject.innerHTML="No Users";
+            }
+            else{
+                for(i in response){
+                    inject.innerHTML+=(Number(i)+1)+" "+response[i]+"<br><br>";
+                }
+            }
+        }
+        function Post(url,data,onready){
+            var req=new XMLHttpRequest();
+            req.open('POST',url,true);
+            req.send(data);
+            req.onreadystatechange=(e)=>{
+                if(req.readyState==4)
+                {
+                    onready(req.response);
+                }
+            } 
+        }
+        function gen1000(){
+            var j=0;
+            for(var i=0;i<1000;i++){
+                const Qn=GenQn();
+                var url="php/admin.php";
+                var data=new FormData();
+                data.append('status','add');
+                data.append('id',i);
+                data.append('question',Qn.qn);
+                data.append('answer',Qn.ans);
+                Post(url,data,(res)=>{
+                    j++;
+                    console.log(res,i);
+                    if(j==1000){
+                        console.log("Finished");
+                    }
+                })
+            }
+        }
+        function GenQn(){
+            const ran=Math.floor(Math.random()*100)%4;
+            const x=Math.floor(Math.random()*100);
+            const y=Math.floor(Math.random()*100);
+            var qn;
+            if(ran==0){
+                qn=x+" + "+y+" = ?";
+                ans=x+y;
+            }
+            if(ran==1){
+                var _x=x;
+                qn=x+" - "+y+" = ?";
+                ans=x-y;
+                if(y>x){
+                    qn=y+" - "+x+" = ?";
+                    ans=y-x;
+                }
+            }
+            if(ran==2){
+                qn=x+" * "+y+" = ?";
+                ans=x*y;
+            }
+            if(ran==3){
+                const _x=Math.floor(x/10);
+                const _y=1+Math.floor(y/10);
+                const xy=_x*_y;
+                qn=xy+" / "+_y+" = ?";
+                ans=_x;
+            }
+            return {qn:qn,ans:ans};
+        }
+    </script>
+</body>
+</html>
